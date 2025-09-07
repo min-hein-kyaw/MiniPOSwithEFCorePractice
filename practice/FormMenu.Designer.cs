@@ -33,6 +33,7 @@
             addProductToolStripMenuItem = new ToolStripMenuItem();
             salesToolStripMenuItem = new ToolStripMenuItem();
             settingsToolStripMenuItem = new ToolStripMenuItem();
+            exitToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -56,7 +57,7 @@
             // 
             addProductToolStripMenuItem.Name = "addProductToolStripMenuItem";
             addProductToolStripMenuItem.Size = new Size(180, 22);
-            addProductToolStripMenuItem.Text = "Add Products";
+            addProductToolStripMenuItem.Text = "Products";
             addProductToolStripMenuItem.Click += addProductToolStripMenuItem_Click;
             // 
             // salesToolStripMenuItem
@@ -67,9 +68,17 @@
             // 
             // settingsToolStripMenuItem
             // 
+            settingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exitToolStripMenuItem });
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             settingsToolStripMenuItem.Size = new Size(61, 20);
             settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // exitToolStripMenuItem
+            // 
+            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            exitToolStripMenuItem.Size = new Size(92, 22);
+            exitToolStripMenuItem.Text = "Exit";
+            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // FormMenu
             // 
@@ -79,6 +88,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "FormMenu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormMenu";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -93,5 +103,6 @@
         private ToolStripMenuItem addProductToolStripMenuItem;
         private ToolStripMenuItem salesToolStripMenuItem;
         private ToolStripMenuItem settingsToolStripMenuItem;
+        private ToolStripMenuItem exitToolStripMenuItem;
     }
 }

@@ -22,5 +22,10 @@ namespace practice
             FormProduct formProduct = new FormProduct();
             formProduct.ShowDialog();
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

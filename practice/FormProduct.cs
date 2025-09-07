@@ -12,25 +12,26 @@ namespace practice
 {
     public partial class FormProduct : Form
     {
+        public string? _productId;
+        public AppDbContext db = new AppDbContext();
         public FormProduct()
         {
             InitializeComponent();
+            btnUpdate.Visible = false;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
             bool valid = Validation();
-            if(valid == false)
+            if (valid == false)
             {
                 return;
             }
             Create();
             Clear();
+            Read();
 
         }
         private bool Validation()
@@ -59,7 +60,6 @@ namespace practice
         }
         private void Create()
         {
-            AppDbContext db = new AppDbContext();
             ProductDTO productDTO = new ProductDTO()
             {
 
@@ -82,6 +82,90 @@ namespace practice
             textBox_ProductCode.Clear();
             textBox_Quantity.Clear();
             textBox_ProductName.Clear();
+        }
+
+        private void FormProduct_Load(object sender, EventArgs e)
+        {
+            Read();
+        }
+        private void Read()
+        {
+            dgvTable.DataSource = db.Products.Where(item => item.DeleteFlag == false).ToList();
+        }
+
+        private void dgvTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex >= 0 && e.ColumnIndex == 0)
+            {
+                btnUpdate.Visible = true;
+                DataGridViewRow selectedRow = dgvTable.Rows[e.RowIndex];
+                _productId = selectedRow.Cells["ProductId"].Value.ToString();
+                textBox_Quantity.Text = selectedRow.Cells["ProductQuantity"].Value.ToString();
+                textBox_ProductName.Text = selectedRow.Cells["ProductName"].Value.ToString();
+                textBox_ProductCode.Text = selectedRow.Cells["ProductCode"].Value.ToString();
+                textBox_Price.Text = selectedRow.Cells["ProductPrice"].Value.ToString();
+            }
+
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 1)
+            {
+                DataGridViewRow selectedRow = dgvTable.Rows[e.RowIndex];
+                _productId = selectedRow.Cells["ProductId"].Value.ToString();
+                Delete();
+                Read();
+
+
+            }
+        }
+
+        public void Delete()
+        {
+            ProductDTO? deletedProduct = db.Products.Where(item => item.ProductId == _productId).FirstOrDefault();
+            if (deletedProduct == null)
+            {
+                return;
+            }
+            DialogResult result = MessageBox.Show("Do you want to delete this?", "Confirmation Messge", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            deletedProduct.DeleteFlag = true;
+            db.SaveChanges();
+        }
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure to update?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Cancel)
+            {
+
+                return;
+            }
+            Update();
+            Read();
+            Clear();
+        }
+        public new void Update()
+        {
+            ProductDTO? editEmployee = db.Products.Where(item => item.ProductId == _productId).FirstOrDefault();
+            if (editEmployee != null)
+            {
+
+                editEmployee.ProductName = textBox_ProductName.Text;
+                editEmployee.ProductCode = textBox_ProductCode.Text;
+                editEmployee.Price = Convert.ToDecimal(textBox_Price.Text);
+                editEmployee.Quantity = Convert.ToInt32(textBox_Quantity.Text);
+                db.SaveChanges();
+                MessageBox.Show("Update Complete", "Success Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnUpdate.Visible = false;
+
+
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            Read();
         }
     }
 }

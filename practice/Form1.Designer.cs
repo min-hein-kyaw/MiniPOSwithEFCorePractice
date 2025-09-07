@@ -91,6 +91,7 @@
             Controls.Add(label1);
             Controls.Add(textBox_Username);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             ResumeLayout(false);
             PerformLayout();

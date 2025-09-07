@@ -23,6 +23,6 @@ namespace practice
             };
             optionsBuilder.UseSqlServer(sqlConnectionStringBuilder.ConnectionString);
         }
-        DbSet<ProductDTO> Products { get; set; }
+        public DbSet<ProductDTO> Products { get; set; }
     }
 }
