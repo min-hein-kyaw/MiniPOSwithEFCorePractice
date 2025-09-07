@@ -27,5 +27,13 @@ namespace practice
         {
             Application.Exit();
         }
+
+       
+
+
+        private void FormMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

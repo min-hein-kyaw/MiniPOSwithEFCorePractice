@@ -56,7 +56,7 @@
             // addProductToolStripMenuItem
             // 
             addProductToolStripMenuItem.Name = "addProductToolStripMenuItem";
-            addProductToolStripMenuItem.Size = new Size(180, 22);
+            addProductToolStripMenuItem.Size = new Size(121, 22);
             addProductToolStripMenuItem.Text = "Products";
             addProductToolStripMenuItem.Click += addProductToolStripMenuItem_Click;
             // 
@@ -90,6 +90,7 @@
             Name = "FormMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormMenu";
+            FormClosing += FormMenu_FormClosing;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
