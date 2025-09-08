@@ -133,6 +133,7 @@ namespace practice
             deletedProduct.DeleteFlag = true;
             db.SaveChanges();
         }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure to update?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -166,6 +167,11 @@ namespace practice
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             Read();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Clear();
         }
     }
 }

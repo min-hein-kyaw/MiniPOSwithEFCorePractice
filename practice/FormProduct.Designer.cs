@@ -28,6 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             label1 = new Label();
             textBox_ProductCode = new TextBox();
             label2 = new Label();
@@ -40,6 +46,7 @@
             dgvTable = new DataGridView();
             btnUpdate = new Button();
             btnRefresh = new Button();
+            btnCancel = new Button();
             btnEdit = new DataGridViewButtonColumn();
             btnDelete = new DataGridViewButtonColumn();
             ProductID = new DataGridViewTextBoxColumn();
@@ -117,7 +124,7 @@
             // 
             // btn_Add
             // 
-            btn_Add.Location = new Point(428, 189);
+            btn_Add.Location = new Point(444, 189);
             btn_Add.Name = "btn_Add";
             btn_Add.Size = new Size(75, 23);
             btn_Add.TabIndex = 8;
@@ -129,18 +136,54 @@
             // 
             dgvTable.AllowUserToAddRows = false;
             dgvTable.AllowUserToDeleteRows = false;
-            dgvTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.BackColor = Color.BlueViolet;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dgvTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvTable.BackgroundColor = SystemColors.ActiveCaption;
+            dgvTable.BorderStyle = BorderStyle.Fixed3D;
+            dgvTable.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(128, 128, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvTable.ColumnHeadersHeight = 30;
+            dgvTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvTable.Columns.AddRange(new DataGridViewColumn[] { btnEdit, btnDelete, ProductID, ProductCode, ProductName, ProductPrice, ProductQuantity, DeleteFlag });
-            dgvTable.Location = new Point(126, 250);
+            dgvTable.EnableHeadersVisualStyles = false;
+            dgvTable.GridColor = SystemColors.ActiveBorder;
+            dgvTable.Location = new Point(161, 250);
             dgvTable.Name = "dgvTable";
             dgvTable.ReadOnly = true;
-            dgvTable.Size = new Size(643, 349);
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.BlueViolet;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dgvTable.RowHeadersVisible = false;
+            dgvTable.RowHeadersWidth = 50;
+            dgvTable.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle6.BackColor = Color.BlueViolet;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dgvTable.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dgvTable.Size = new Size(578, 349);
             dgvTable.TabIndex = 9;
             dgvTable.CellContentClick += dgvTable_CellContentClick;
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(428, 189);
+            btnUpdate.Location = new Point(444, 189);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 23);
             btnUpdate.TabIndex = 10;
@@ -150,7 +193,7 @@
             // 
             // btnRefresh
             // 
-            btnRefresh.Location = new Point(509, 189);
+            btnRefresh.Location = new Point(525, 189);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(65, 23);
             btnRefresh.TabIndex = 11;
@@ -158,8 +201,24 @@
             btnRefresh.UseVisualStyleBackColor = true;
             btnRefresh.Click += btnRefresh_Click;
             // 
+            // btnCancel
+            // 
+            btnCancel.Location = new Point(363, 189);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 12;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
             // btnEdit
             // 
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(128, 128, 255);
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            btnEdit.DefaultCellStyle = dataGridViewCellStyle3;
+            btnEdit.FlatStyle = FlatStyle.Popup;
             btnEdit.HeaderText = "";
             btnEdit.Name = "btnEdit";
             btnEdit.ReadOnly = true;
@@ -168,6 +227,11 @@
             // 
             // btnDelete
             // 
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(128, 128, 255);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            btnDelete.DefaultCellStyle = dataGridViewCellStyle4;
+            btnDelete.FlatStyle = FlatStyle.Popup;
             btnDelete.HeaderText = "";
             btnDelete.Name = "btnDelete";
             btnDelete.ReadOnly = true;
@@ -223,6 +287,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(901, 611);
+            Controls.Add(btnCancel);
             Controls.Add(btnRefresh);
             Controls.Add(btnUpdate);
             Controls.Add(dgvTable);
@@ -235,6 +300,7 @@
             Controls.Add(label2);
             Controls.Add(textBox_ProductCode);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "FormProduct";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormProduct";
@@ -258,6 +324,7 @@
         private DataGridView dgvTable;
         private Button btnUpdate;
         private Button btnRefresh;
+        private Button btnCancel;
         private DataGridViewButtonColumn btnEdit;
         private DataGridViewButtonColumn btnDelete;
         private DataGridViewTextBoxColumn ProductID;
