@@ -82,6 +82,7 @@ namespace practice
             textBox_ProductCode.Clear();
             textBox_Quantity.Clear();
             textBox_ProductName.Clear();
+            _productId = null;
         }
 
         private void FormProduct_Load(object sender, EventArgs e)
@@ -99,12 +100,16 @@ namespace practice
             if (e.RowIndex >= 0 && e.ColumnIndex == 0)
             {
                 btnUpdate.Visible = true;
-                DataGridViewRow selectedRow = dgvTable.Rows[e.RowIndex];
-                _productId = selectedRow.Cells["ProductId"].Value.ToString();
-                textBox_Quantity.Text = selectedRow.Cells["ProductQuantity"].Value.ToString();
-                textBox_ProductName.Text = selectedRow.Cells["ProductName"].Value.ToString();
-                textBox_ProductCode.Text = selectedRow.Cells["ProductCode"].Value.ToString();
-                textBox_Price.Text = selectedRow.Cells["ProductPrice"].Value.ToString();
+                _productId = dgvTable.Rows[e.RowIndex].Cells["ProductId"].Value.ToString();
+                ProductDTO? currentProduct = db.Products.Where(item => item.ProductId == _productId).FirstOrDefault();
+                if(currentProduct == null)
+                {
+                    MessageBox.Show("Product doesn't exist");
+                }
+                textBox_ProductCode.Text = currentProduct.ProductCode;
+                textBox_ProductName.Text = currentProduct.ProductName;
+                textBox_Price.Text = currentProduct.Price.ToString();
+                textBox_Quantity.Text = currentProduct.Quantity.ToString();
             }
 
             else if (e.RowIndex >= 0 && e.ColumnIndex == 1)
