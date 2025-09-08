@@ -114,8 +114,8 @@ namespace practice
 
             else if (e.RowIndex >= 0 && e.ColumnIndex == 1)
             {
-                DataGridViewRow selectedRow = dgvTable.Rows[e.RowIndex];
-                _productId = selectedRow.Cells["ProductId"].Value.ToString();
+                
+                _productId = dgvTable.Rows[e.RowIndex].Cells["ProductId"].Value.ToString();
                 Delete();
                 Read();
 
