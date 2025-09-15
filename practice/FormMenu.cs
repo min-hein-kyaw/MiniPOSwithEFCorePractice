@@ -28,12 +28,18 @@ namespace practice
             Application.Exit();
         }
 
-       
+
 
 
         private void FormMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void salesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSales formSales = new FormSales();
+            formSales.ShowDialog();
         }
     }
 }

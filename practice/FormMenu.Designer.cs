@@ -65,6 +65,7 @@
             salesToolStripMenuItem.Name = "salesToolStripMenuItem";
             salesToolStripMenuItem.Size = new Size(45, 20);
             salesToolStripMenuItem.Text = "Sales";
+            salesToolStripMenuItem.Click += salesToolStripMenuItem_Click;
             // 
             // settingsToolStripMenuItem
             // 

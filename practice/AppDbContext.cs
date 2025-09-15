@@ -23,6 +23,15 @@ namespace practice
             };
             optionsBuilder.UseSqlServer(sqlConnectionStringBuilder.ConnectionString);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SaleDetailDTO>().HasKey(sd => new { sd.ProductId });
+        }
+
+
         public DbSet<ProductDTO> Products { get; set; }
+        public DbSet<SaleDTO> Sale { get; set; }
+        public DbSet<SaleDetailDTO> SaleDetail { get; set; }
     }
 }

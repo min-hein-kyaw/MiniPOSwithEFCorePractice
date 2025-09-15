@@ -71,7 +71,7 @@ namespace practice
                 Price = Convert.ToDecimal(textBox_Price.Text),
 
             };
-            db.Add(productDTO);
+            db.Products.Add(productDTO);
             int result = db.SaveChanges();
             string message = result > 0 ? "Save Complete" : "Save Error";
             MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
