@@ -139,8 +139,20 @@ namespace practice
             int id = createSale();
             CreateSaleDetail(id);
             MessageBox.Show("Check Out Completed!", "Confirmation Message", MessageBoxButtons.OK);
+            clear();
+            
+
         }
 
+        public void clear()
+        {
+            textBoxTotal.Text = null;
+            comboBoxSelect.SelectedIndex = 0;
+            textBoxPrice.Text = null;
+            numericUpDown1.Value = 0;
+            dataGridViewProduct.DataSource = null;
+        }
+        
         public void CreateSaleDetail(int id) {
 
             foreach (var item in Products) {

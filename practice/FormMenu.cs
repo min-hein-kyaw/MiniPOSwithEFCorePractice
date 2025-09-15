@@ -41,5 +41,11 @@ namespace practice
             FormSales formSales = new FormSales();
             formSales.ShowDialog();
         }
+
+        private void summaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSummary formSummary = new FormSummary();
+            formSummary.ShowDialog();
+        }
     }
 }
