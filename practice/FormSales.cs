@@ -107,6 +107,7 @@ namespace practice
         private List<ProductDTO> Products = new List<ProductDTO>();
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            dataGridViewProduct.DataSource = null;
             string productId = comboBoxSelect.SelectedValue.ToString();
             string productName = comboBoxSelect.Text.ToString();
             decimal price = Convert.ToDecimal(textBoxPrice.Text);
@@ -138,7 +139,8 @@ namespace practice
         {
             int id = createSale();
             CreateSaleDetail(id);
-            MessageBox.Show("Check Out Completed!", "Confirmation Message", MessageBoxButtons.OK);
+            MessageBox.Show("Check Out Completed!", "Confirmation Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            dataGridViewProduct.DataSource = null;
             clear();
             
 
@@ -151,6 +153,7 @@ namespace practice
             textBoxPrice.Text = null;
             numericUpDown1.Value = 0;
             dataGridViewProduct.DataSource = null;
+            Products.Clear();
         }
         
         public void CreateSaleDetail(int id) {
@@ -163,10 +166,15 @@ namespace practice
                 Quantity = item.Quantity,
                 Price = item.Price,
                 
+
+
                 };
+
                 db.SaleDetail.Add(detail);
-                
-            
+                var pitem = db.Products.Where(item => item.ProductId == detail.ProductId).FirstOrDefault();
+                if (pitem != null) {
+                    pitem.Quantity -= detail.Quantity;
+                }
             }
             db.SaveChanges();
 

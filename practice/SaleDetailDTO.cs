@@ -10,9 +10,12 @@ using System.Threading.Tasks;
 namespace practice
 {
     [Table("Table_SaleDetail")]
-    [Keyless]
     public class SaleDetailDTO
     {
+        [Key]
+        [Column("No")]
+        public int No { get; set; }
+
         [Column("SaleId")]
         public int SaleId {  get; set; }
 
