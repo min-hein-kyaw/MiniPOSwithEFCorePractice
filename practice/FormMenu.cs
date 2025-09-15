@@ -47,5 +47,11 @@ namespace practice
             FormSummary formSummary = new FormSummary();
             formSummary.ShowDialog();
         }
+
+        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSearch formSearch = new FormSearch();
+            formSearch.ShowDialog();
+        }
     }
 }
