@@ -161,7 +161,7 @@ namespace practice
                 SaleId = id,
                 ProductId = item.ProductId,
                 Quantity = item.Quantity,
-                Price=item.Price,
+                Price = item.Price,
                 
                 };
                 db.SaleDetail.Add(detail);

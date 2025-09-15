@@ -30,10 +30,10 @@ namespace practice
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            dataGridViewSearch.DataSource = null;
             string voucherNo = textBoxSearch.Text;
             SaleDTO? item = db.Sale.Where(x => x.VoucherNo == voucherNo).FirstOrDefault();
-            List<SaleDetailDTO> list = db.SaleDetail.Where(x => x.SaleId == item.SaleId).ToList();
-            dataGridViewSearch.DataSource = list;
+            dataGridViewSearch.DataSource = db.SaleDetail.Where(x => x.SaleId == item.SaleId).ToList();
         }
     }
 }

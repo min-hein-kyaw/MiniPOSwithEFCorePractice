@@ -28,15 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             textBoxSearch = new TextBox();
             label1 = new Label();
             btnSearch = new Button();
             dataGridViewSearch = new DataGridView();
+            saleDTOBindingSource = new BindingSource(components);
+            saleDetailDTOBindingSource = new BindingSource(components);
             SaleId = new DataGridViewTextBoxColumn();
             ProductId = new DataGridViewTextBoxColumn();
             Quantity = new DataGridViewTextBoxColumn();
             Price = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSearch).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)saleDTOBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)saleDetailDTOBindingSource).BeginInit();
             SuspendLayout();
             // 
             // textBoxSearch
@@ -70,13 +75,23 @@
             // 
             dataGridViewSearch.AllowUserToAddRows = false;
             dataGridViewSearch.AllowUserToDeleteRows = false;
+            dataGridViewSearch.AutoGenerateColumns = false;
             dataGridViewSearch.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewSearch.Columns.AddRange(new DataGridViewColumn[] { SaleId, ProductId, Quantity, Price });
+            dataGridViewSearch.DataSource = saleDetailDTOBindingSource;
             dataGridViewSearch.Location = new Point(96, 180);
             dataGridViewSearch.Name = "dataGridViewSearch";
             dataGridViewSearch.ReadOnly = true;
             dataGridViewSearch.Size = new Size(609, 237);
             dataGridViewSearch.TabIndex = 3;
+            // 
+            // saleDTOBindingSource
+            // 
+            saleDTOBindingSource.DataSource = typeof(SaleDTO);
+            // 
+            // saleDetailDTOBindingSource
+            // 
+            saleDetailDTOBindingSource.DataSource = typeof(SaleDetailDTO);
             // 
             // SaleId
             // 
@@ -119,6 +134,8 @@
             Text = "FormSearch";
             Load += FormSearch_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewSearch).EndInit();
+            ((System.ComponentModel.ISupportInitialize)saleDTOBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)saleDetailDTOBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -129,6 +146,8 @@
         private Label label1;
         private Button btnSearch;
         private DataGridView dataGridViewSearch;
+        private BindingSource saleDetailDTOBindingSource;
+        private BindingSource saleDTOBindingSource;
         private DataGridViewTextBoxColumn SaleId;
         private DataGridViewTextBoxColumn ProductId;
         private DataGridViewTextBoxColumn Quantity;
