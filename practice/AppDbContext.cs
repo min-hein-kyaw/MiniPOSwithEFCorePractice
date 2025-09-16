@@ -30,5 +30,7 @@ namespace practice
         public DbSet<ProductDTO> Products { get; set; }
         public DbSet<SaleDTO> Sale { get; set; }
         public DbSet<SaleDetailDTO> SaleDetail { get; set; }
+
+        public DbSet<UserDTO> User { get; set; }
     }
 }

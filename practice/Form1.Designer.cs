@@ -41,7 +41,6 @@
             textBox_Username.Name = "textBox_Username";
             textBox_Username.Size = new Size(195, 23);
             textBox_Username.TabIndex = 0;
-            textBox_Username.Text = "admin";
             // 
             // label1
             // 
@@ -68,7 +67,6 @@
             textBox_Password.PasswordChar = '*';
             textBox_Password.Size = new Size(195, 23);
             textBox_Password.TabIndex = 3;
-            textBox_Password.Text = "admin";
             // 
             // btn_Login
             // 
@@ -93,6 +91,7 @@
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }

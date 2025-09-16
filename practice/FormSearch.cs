@@ -33,6 +33,14 @@ namespace practice
             dataGridViewSearch.DataSource = null;
             string voucherNo = textBoxSearch.Text;
             SaleDTO? item = db.Sale.Where(x => x.VoucherNo == voucherNo).FirstOrDefault();
+            if (item is null) {
+
+                MessageBox.Show("Cannot find the voucher number", "not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            
+            }
+
+
             dataGridViewSearch.DataSource = db.SaleDetail.Where(x => x.SaleId == item.SaleId).ToList();
         }
     }
