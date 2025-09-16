@@ -35,6 +35,10 @@
             TotalAmount = new DataGridViewTextBoxColumn();
             textBoxTotalSold = new TextBox();
             label1 = new Label();
+            label2 = new Label();
+            textBoxExpense = new TextBox();
+            label3 = new Label();
+            textBoxNetIncome = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSale).BeginInit();
             SuspendLayout();
             // 
@@ -87,15 +91,54 @@
             label1.AutoSize = true;
             label1.Location = new Point(601, 63);
             label1.Name = "label1";
-            label1.Size = new Size(57, 15);
+            label1.Size = new Size(47, 15);
             label1.TabIndex = 2;
-            label1.Text = "Total Sale";
+            label1.Text = "Income";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(601, 143);
+            label2.Name = "label2";
+            label2.Size = new Size(49, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Expense";
+            // 
+            // textBoxExpense
+            // 
+            textBoxExpense.Location = new Point(601, 170);
+            textBoxExpense.Name = "textBoxExpense";
+            textBoxExpense.ReadOnly = true;
+            textBoxExpense.RightToLeft = RightToLeft.Yes;
+            textBoxExpense.Size = new Size(100, 23);
+            textBoxExpense.TabIndex = 4;
+            textBoxExpense.TextChanged += textBoxExpense_TextChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(602, 233);
+            label3.Name = "label3";
+            label3.Size = new Size(69, 15);
+            label3.TabIndex = 5;
+            label3.Text = "Net Income";
+            // 
+            // textBoxNetIncome
+            // 
+            textBoxNetIncome.Location = new Point(601, 261);
+            textBoxNetIncome.Name = "textBoxNetIncome";
+            textBoxNetIncome.Size = new Size(100, 23);
+            textBoxNetIncome.TabIndex = 6;
             // 
             // FormSummary
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(textBoxNetIncome);
+            Controls.Add(label3);
+            Controls.Add(textBoxExpense);
+            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(textBoxTotalSold);
             Controls.Add(dataGridViewSale);
@@ -116,5 +159,9 @@
         private DataGridViewTextBoxColumn TotalAmount;
         private TextBox textBoxTotalSold;
         private Label label1;
+        private Label label2;
+        private TextBox textBoxExpense;
+        private Label label3;
+        private TextBox textBoxNetIncome;
     }
 }

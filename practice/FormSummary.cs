@@ -28,6 +28,8 @@ namespace practice
             List<SaleDTO> list = db.Sale.ToList();
             dataGridViewSale.DataSource = list;
             textBoxTotalSold.Text = db.Sale.Sum(item => item.TotalAmount).ToString();
+            textBoxExpense.Text = db.Products.Sum(item => item.Quantity* item.Price).ToString();
+            textBoxNetIncome.Text = (Convert.ToDecimal(textBoxTotalSold.Text) - Convert.ToDecimal(textBoxExpense.Text)).ToString();
         }
 
         private void dataGridViewSale_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -36,6 +38,11 @@ namespace practice
         }
 
         private void textBoxTotalSold_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxExpense_TextChanged(object sender, EventArgs e)
         {
 
         }

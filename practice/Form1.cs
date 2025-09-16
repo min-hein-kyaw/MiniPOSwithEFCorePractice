@@ -11,20 +11,16 @@ namespace practice
         }
 
         private void btn_Login_Click(object sender, EventArgs e)
-            
+
         {
             List<UserDTO> list = db.User.ToList();
-            bool IsAuthenticated  = list.Any(item => item.Username == textBox_Username.Text && item.Password == textBox_Password.Text);
-            if(IsAuthenticated == false)
+            bool IsAuthenticated = list.Any(item => item.Username == textBox_Username.Text && item.Password == textBox_Password.Text);
+            if (IsAuthenticated == false)
             {
                 MessageBox.Show("Incorrect username or password", "verification error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
-                
-            
 
-            
             this.Hide();
             FormMenu formMenu = new FormMenu();
             formMenu.ShowDialog();
@@ -33,6 +29,12 @@ namespace practice
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            FormCreateUser formCreateUser = new FormCreateUser();
+            formCreateUser.ShowDialog();
         }
     }
 }
